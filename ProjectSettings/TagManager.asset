@@ -9,6 +9,8 @@ TagManager:
   - Player_Cube
   - Tile_Spawn_Trigger
   - Tile_
+  - TIle
+  - Tile_End_Trigger
   layers:
   - Default
   - TransparentFX

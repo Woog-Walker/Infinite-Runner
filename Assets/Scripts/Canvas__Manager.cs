@@ -1,91 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
-public class Canvas__Manager : MonoBehaviour
+
+public class Canvas_Manager : MonoBehaviour
 {
     [SerializeField] Player_Movement player_movement_script;
+    [Space]
 
-    [Header("start stuff")]
+    [Header("game starts elements")]
+    [SerializeField] GameObject startScreen;
+    [SerializeField] Image background_start;
     [SerializeField] Image image_hand;
     [SerializeField] TMP_Text start_text;
+    [SerializeField] Color colorTo;
     [Space]
-    [SerializeField] GameObject button_restart;
+
+    [Header("game over elements")]
+    [SerializeField] GameObject endScreen;
     [SerializeField] TMP_Text text_restart;
-    [SerializeField] Button button_restartt;
-    // test comm
-    public static Canvas__Manager UI_Instance { get; private set; }
+    [SerializeField] Button button_restart;
+
+    float anim_time = 0.5f;
+    float iconAnimationTime = 1.75f;
+    float iconAnimationOffset = 150;
+    public static Canvas_Manager UI_Instance { get; private set; }
+
+    Sequence icon_move_seq;
 
     private void Awake()
     {
-        if (UI_Instance == null)
-            UI_Instance = this;
-        else
-            Destroy(gameObject);
+        DOTween.KillAll();
+        icon_move_seq = DOTween.Sequence();
     }
 
     private void Start()
     {
-        Move_Icon_Right();
+        Start_Icon_Moving();
     }
 
-    private void Update()
+    public void StartMatchUI()
     {
-#if UNITY_EDITOR
+        background_start.DOColor(colorTo, anim_time);
 
-        if (Input.GetKeyDown(KeyCode.N) && !player_movement_script.has_started)        
-            BTN_Start();  
-        
-#else
-
-        if (Input.touchCount > 0 && !player_movement_script.has_started)        
-            BTN_Start();
-
-#endif
-
+        image_hand.rectTransform.DOScale(Vector3.zero, anim_time);
+        start_text.rectTransform.DOScale(Vector3.zero, anim_time).OnComplete(() => {
+            startScreen.SetActive(false);
+        });
     }
 
-    public void BTN_Start()
+    private void Start_Icon_Moving()
     {
-        player_movement_script.Start_Movement();
-
-
-        start_text.rectTransform.DOLocalMove(new Vector3(start_text.transform.localPosition.x, start_text.transform.localPosition.y - 2000, start_text.transform.localPosition.z), 1);
-        image_hand.rectTransform.DOLocalMove(new Vector3(image_hand.transform.localPosition.x, image_hand.transform.localPosition.y - 2000, image_hand.transform.localPosition.z), 1)
-            .OnComplete(() =>
-            {
-                start_text.enabled = false;
-                image_hand.enabled = false;
-            });
-
-        player_movement_script.has_started = true;
-    }
-
-    public void Move_Icon_Right()
-    {
-        image_hand.rectTransform.DOLocalMove(new Vector3(150, image_hand.transform.localPosition.y, image_hand.transform.localPosition.z), 2)
-            .OnComplete(() => { Move_Icon_Left(); })
-            .SetEase(Ease.InOutCubic);
-    }
-
-    public void Move_Icon_Left()
-    {
-        image_hand.rectTransform.DOLocalMove(new Vector3(-150, image_hand.transform.localPosition.y, image_hand.transform.localPosition.z), 2)
-            .OnComplete(()=> { Move_Icon_Right(); })
-            .SetEase(Ease.InOutCubic);
-    }
-
-    public void Restart_Level()
-    {
-        SceneManager.LoadScene(0);
+        icon_move_seq
+            .Append(image_hand.rectTransform.DOLocalMove(new Vector3(iconAnimationOffset, image_hand.transform.localPosition.y, image_hand.transform.localPosition.z), iconAnimationTime).SetEase(Ease.InOutCubic))
+            .Append(image_hand.rectTransform.DOLocalMove(new Vector3(-iconAnimationOffset, image_hand.transform.localPosition.y, image_hand.transform.localPosition.z), iconAnimationTime).SetEase(Ease.InOutCubic))
+            .SetLoops(-1, LoopType.Yoyo);
     }
 
     public void Over_UI()
     {
-        button_restart.SetActive(true);
-        text_restart.enabled = true;
+        endScreen.SetActive(true);
+
+        text_restart.rectTransform.DOScale(Vector3.one, anim_time);
+        button_restart.transform.DOScale(Vector3.one, anim_time);
     }
 }
