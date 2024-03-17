@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Animator_Controller : MonoBehaviour
@@ -9,11 +7,7 @@ public class Animator_Controller : MonoBehaviour
     [SerializeField] Rigidbody part_to_push;
     [SerializeField] float power;
 
-    Animator animtor;
-    private void Awake()
-    {
-        animtor = GetComponent<Animator>();
-    }
+    [SerializeField] Animator animtor;
 
     public void Animation_Jump()
     {

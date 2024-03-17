@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class Cubes_Manager : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class Cubes_Manager : MonoBehaviour
     [SerializeField] GameObject player_GFX;
     [SerializeField] ParticleSystem stack_VFX;
     [SerializeField] Transform cubes_place;
-    [Space]
-    [SerializeField] Animator_Controller animator_controller;
-    [SerializeField] Player_Canvas_Manager player_canvas_manager;
+    /*    [Space]*/
+    /*    [SerializeField] Animator_Controller animator_controller;*/
+    /*    [SerializeField] Player_Canvas_Manager player_canvas_manager;*/
+
+   [Inject] Animator_Controller animator_controller;
+   [Inject] Player_Canvas_Manager player_canvas_manager;
 
     public int maxed_cubes { get; private set; }
     int active_cubes = 1;
@@ -70,7 +74,6 @@ public class Cubes_Manager : MonoBehaviour
         for (int i = 0; i < active_cubes_list.Count; i++)
             active_cubes_list[i].transform.localPosition = new Vector3(0, start_cube_offset + i, 0);
     }
-
 
     Transform Get_Highest_Cube()
     {

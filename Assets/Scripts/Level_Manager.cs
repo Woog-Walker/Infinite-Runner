@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class Level_Manager : MonoBehaviour
 {
-    [SerializeField] Canvas_Manager canvas_manager;
-    [SerializeField] Player_Movement player_controller;
-    [SerializeField] Animator_Controller animator_controller;
+    [Inject] Canvas_Manager canvas_manager;
+    [Inject] Player_Movement player_movement;
+    [Inject] Animator_Controller animator_controller;
     [Space]
     [SerializeField] int targetFPS;
 
@@ -36,12 +37,12 @@ public class Level_Manager : MonoBehaviour
         has_level_started = true;
 
         canvas_manager.StartMatchUI();
-        player_controller.Start_Movement();
+        player_movement.Start_Movement();
     }
 
     public void End_Level()
     {
-        player_controller.Stop_Movemenet();
+        player_movement.Stop_Movemenet();
         animator_controller.Ragdoll_Push();
 
         canvas_manager.Over_UI();

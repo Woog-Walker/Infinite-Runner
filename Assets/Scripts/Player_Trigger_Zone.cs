@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class Player_Trigger_Zone : MonoBehaviour
 {
-    [SerializeField] Level_Manager level_manager;
+    [Inject] Level_Manager level_manager;
 
     const string tag_obstacle = "Obstacle";
     const string tag_ground = "Tile_";

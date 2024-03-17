@@ -794,8 +794,6 @@ MonoBehaviour:
   player_GFX: {fileID: 919132148123821992}
   stack_VFX: {fileID: 1059047101}
   cubes_place: {fileID: 2008364134}
-  animator_controller: {fileID: 288210999}
-  player_canvas_manager: {fileID: 1111523437}
 --- !u!65 &181601946
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3626,6 +3624,92 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 0
+--- !u!1 &1143064468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1143064471}
+  - component: {fileID: 1143064470}
+  - component: {fileID: 1143064469}
+  m_Layer: 0
+  m_Name: Scene_Context
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1143064469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143064468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43cc95fb08acba4a9884bdcd98d3100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level_manager: {fileID: 1001861991}
+  pool_tiles: {fileID: 1948094526}
+  tiles_manager: {fileID: 1948094525}
+  canvas_manager: {fileID: 519120721}
+  player_canvas_manager: {fileID: 1111523437}
+  cubes_manager: {fileID: 181601944}
+  animator_controller: {fileID: 288210999}
+  camera_manager: {fileID: 819455350}
+  player_movement: {fileID: 181601943}
+--- !u!114 &1143064470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143064468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 1143064469}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!4 &1143064471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143064468}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1206927928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8019,3 +8103,4 @@ SceneRoots:
   - {fileID: 181601941}
   - {fileID: 1948094524}
   - {fileID: 1001861990}
+  - {fileID: 1143064471}

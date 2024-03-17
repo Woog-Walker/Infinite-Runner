@@ -2,12 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using Zenject;
 
 public class Canvas_Manager : MonoBehaviour
 {
-    [SerializeField] Player_Movement player_movement_script;
-    [Space]
-
     [Header("game starts elements")]
     [SerializeField] GameObject startScreen;
     [SerializeField] Image background_start;
@@ -24,9 +22,12 @@ public class Canvas_Manager : MonoBehaviour
     float anim_time = 0.5f;
     float iconAnimationTime = 1.75f;
     float iconAnimationOffset = 150;
+
     public static Canvas_Manager UI_Instance { get; private set; }
 
     Sequence icon_move_seq;
+
+    [Inject] Player_Movement player_movement_script;
 
     private void Awake()
     {

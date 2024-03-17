@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using Zenject;
 
 public class Tiles_Manager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Tiles_Manager : MonoBehaviour
     [SerializeField] float offset_tile;
     [SerializeField] int start_tiles_quantity;
 
-    [SerializeField] Pool_Tiles pool_of_tiles;
+    [Inject] Pool_Tiles pool_of_tiles;
 
     float animation_time = 0.75f;
     float tile_height_onSpawn = -30;

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
+using Zenject;
 
 public class Player_Movement : MonoBehaviour
 {

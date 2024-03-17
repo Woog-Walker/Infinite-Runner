@@ -1,9 +1,10 @@
 using UnityEngine;
+using Zenject;
 
 public class Player_Trigger_Interaction : MonoBehaviour
 {
-    [SerializeField] Tiles_Manager tiles_manager;
-    [SerializeField] Cubes_Manager cubes_manager;
+    [Inject] Tiles_Manager tiles_manager;
+    [Inject] Cubes_Manager cubes_manager;
 
     string tag_tile = "Tile_End_Trigger";
     string loot_cube_tag = "Loot_Cube";

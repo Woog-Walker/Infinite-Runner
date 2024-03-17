@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
 
 public class Deattach_Cube : MonoBehaviour
 {
-    Cubes_Manager cubes_Manager;
-    Camera_Follower camera_script;
+    [Inject] Cubes_Manager cubes_Manager;
 
     const string tag_obstacle = "Obstacle";
 
     bool can_be_used = true;
 
-    private void Awake()
+/*    private void Awake()
     {
         cubes_Manager = GetComponentInParent<Cubes_Manager>();
-        camera_script = FindObjectOfType<Camera_Follower>();
-    }
+        camera_script = FindObjectOfType<Camera_Manager>();
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
