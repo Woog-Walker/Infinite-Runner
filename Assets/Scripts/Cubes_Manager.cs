@@ -10,12 +10,10 @@ public class Cubes_Manager : MonoBehaviour
     [SerializeField] GameObject player_GFX;
     [SerializeField] ParticleSystem stack_VFX;
     [SerializeField] Transform cubes_place;
-    /*    [Space]*/
-    /*    [SerializeField] Animator_Controller animator_controller;*/
-    /*    [SerializeField] Player_Canvas_Manager player_canvas_manager;*/
 
    [Inject] Animator_Controller animator_controller;
    [Inject] Player_Canvas_Manager player_canvas_manager;
+   [Inject] Camera_Manager camera_manager;
 
     public int maxed_cubes { get; private set; }
     int active_cubes = 1;
@@ -67,6 +65,7 @@ public class Cubes_Manager : MonoBehaviour
         cubes_pool_list.Add(tmp_cube);
 
         Handheld.Vibrate();
+        camera_manager.Camera_Shake();
     }
 
     void Place_Cubes()
