@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.8393539, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.1586683, g: 0.8091406, b: 0.8788698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -854,8 +854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa43e0dd5e472044cbc7219a4ce84310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles_manager: {fileID: 1948094525}
-  cubes_manager: {fileID: 181601944}
 --- !u!1 &207275909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1015,7 @@ MonoBehaviour:
   - {fileID: 20664535}
   part_to_push: {fileID: 565989594}
   power: 888
+  animtor: {fileID: 5866666020793640808}
 --- !u!1 &362227220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,7 +1570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cc618c808cd244bb79a342e08e46d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level_manager: {fileID: 1001861991}
 --- !u!65 &424515093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1958,7 +1956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d0cc220a226054e894833f27550320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_movement_script: {fileID: 0}
   startScreen: {fileID: 1709196647}
   background_start: {fileID: 879158437}
   image_hand: {fileID: 423423815}
@@ -2645,8 +2642,8 @@ MonoBehaviour:
   player: {fileID: 181601941}
   _camera: {fileID: 362227223}
   camera_holder: {fileID: 2147176701}
-  camera_offset: {x: 4, y: 9, z: -10}
-  camera_rotation: {x: 20, y: -15, z: 0}
+  camera_offset: {x: 2.04, y: 8.01, z: -10}
+  camera_rotation: {x: 14.4, y: -11.6, z: 0}
 --- !u!1 &820746823 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3481367610352654943, guid: 085ad57d0f0d5924f8ec77fd5eeb27f9,
@@ -3175,10 +3172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652b1f9c79f352a4f8cdf53ce54744de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas_manager: {fileID: 519120721}
-  player_controller: {fileID: 181601943}
-  animator_controller: {fileID: 288210999}
-  targetFPS: 60
+  targetFPS: 120
 --- !u!54 &1033333634
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4894,7 +4888,6 @@ MonoBehaviour:
   spawn_position: {x: 0, y: 0, z: 30}
   offset_tile: 30
   start_tiles_quantity: 3
-  pool_of_tiles: {fileID: 1948094526}
 --- !u!114 &1948094526
 MonoBehaviour:
   m_ObjectHideFlags: 0
